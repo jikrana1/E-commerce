@@ -113,6 +113,24 @@
     display: flex;
     align-items: center;
     gap: 10px;
+    transition: color 0.3s ease;
+}
+
+.delivery-block h3:hover {
+    color: var(--primary-color);
+}
+
+.delivery-block a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.delivery-block a:hover {
+    text-decoration: underline;
+}
+
+.delivery-block .bold-link {
+    font-weight: 600;
 }
 
 .delivery-block p {
@@ -205,6 +223,10 @@
     justify-content: center;
     box-shadow: 0 4px 14px rgba(8,129,120,0.4);
     z-index: 999;
+}
+
+#scroll-top.visible {
+    display: flex;
 }
 
 #scroll-top:hover {
