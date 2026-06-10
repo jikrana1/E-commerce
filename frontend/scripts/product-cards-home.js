@@ -189,6 +189,11 @@ function renderFeaturedProducts(
             initializeScrollAnimations();
         }
 
+        // Ensure product cards are animated only once per element
+        if (typeof addProductCardAnimations === "function") {
+            addProductCardAnimations('#featured-products');
+        }
+
         // Ensure above-the-fold cards animate
         const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         if (!reduce) {
@@ -202,6 +207,7 @@ function renderFeaturedProducts(
         }
     });
 }
+
 
 
 
