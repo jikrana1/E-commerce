@@ -61,7 +61,7 @@ if (countdown) {
 
         if (distance < 0) {
             countdown.innerHTML =
-                "Offer Expired";
+                "Offer Expired ";
 
             return;
         }
