@@ -464,3 +464,8 @@ button {
       background-color 0.3s !important;
   }
 }
+
+#hero {
+  opacity: 1 !important;
+  transform: none !important;
+}

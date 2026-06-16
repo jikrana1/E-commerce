@@ -322,10 +322,23 @@ function initializeParallaxEffects() {
 
 function runHeroOnceOnly() {
   const hero = document.getElementById("hero");
-  if (!hero) return;
-  if (hero.dataset.heroAnimated === "1") return;
+
+  if (!hero) {
+    return;
+  }
+
+  if (hero.dataset.heroAnimated === "1") {
+    return;
+  }
 
   hero.dataset.heroAnimated = "1";
+
+  hero.classList.remove("animate-on-scroll");
+  hero.classList.add("in-view");
+
+  hero.style.opacity = "1";
+  hero.style.transform = "none";
+
   hero.classList.add("hero-animate-once");
 
   requestAnimationFrame(() => {
