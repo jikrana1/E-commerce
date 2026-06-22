@@ -51,6 +51,11 @@ const wishlistRoutes =
     );
 const recommendationRoutes = require("./routes/recommendationRoutes");
 
+const cartRoutes =
+    require(
+        "./routes/cartRoutes"
+    );
+
 const pincodeRoutes = require("./routes/pincodeRoutes");
 
 // app

@@ -238,6 +238,10 @@ product section
         flex: 1 1 280px;
         max-width: 300px;
     }
+
+    .product-actions .wishlist-btn{
+        width: 100%;
+    }
 }
 
 .product-actions .primary-action:hover {
