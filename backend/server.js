@@ -9,6 +9,8 @@ const rateLimit = require("express-rate-limit");
 
 const helmet = require("helmet");
 
+const routes = require("./routes/index")
+
 // load environment
 dotenv.config();
 
@@ -35,30 +37,6 @@ requiredEnv.forEach((key) => {
 
 // database
 require("./config/db");
-
-// routes
-const productRoutes = require("./routes/productRoutes");
-
-const authRoutes = require("./routes/authRoutes");
-
-const orderRoutes = require("./routes/orderRoutes");
-
-const promoRoutes = require("./routes/promoRoutes");
-const adminRoutes = require("./routes/adminRoutes");
-const chatRoutes = require("./routes/chatRoutes");
-
-const wishlistRoutes =
-    require(
-        "./routes/wishlistRoutes"
-    );
-const recommendationRoutes = require("./routes/recommendationRoutes");
-
-const cartRoutes =
-    require(
-        "./routes/cartRoutes"
-    );
-
-const pincodeRoutes = require("./routes/pincodeRoutes");
 
 // init app
 const app = express();
@@ -145,10 +123,7 @@ const allowedOrigins = [
   // production
   "https://e-commerce-git-main-bhuvanshs-projects.vercel.app",
 
-    "https://www.bhuvansh.xyz",
-    
-    // local file execution
-    "null"
+    "https://www.bhuvansh.xyz"
 ];
 
 // cors
@@ -246,6 +221,8 @@ app.use("/api/auth/login", authLimiter);
 
 app.use("/api/auth/signup", authLimiter);
 
+app.use("/api/auth/forgot-password", authLimiter);
+
 // health route
 app.get("/health", (req, res) => {
   return res.status(200).json({
@@ -266,23 +243,8 @@ app.get("/", (req, res) => {
   });
 });
 
-// api routes
-app.use("/api/products", productRoutes);
+app.use("/api", routes);
 
-app.use("/api/auth", authRoutes);
-
-app.use("/api/orders", orderRoutes);
-app.use("/api/promos", promoRoutes);
-app.use("/api/admin", adminRoutes);
-app.use("/api/chat", chatRoutes);
-
-app.use(
-    "/api/wishlist",
-    wishlistRoutes
-);
-
-app.use("/api/recommendations", recommendationRoutes);
-app.use("/api/pincode", pincodeRoutes);
 // 404 handler
 app.use((req, res) => {
   return res.status(404).json({

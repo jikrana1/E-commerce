@@ -141,8 +141,6 @@ function renderProducts(container, products = []) {
   const fragment = document.createDocumentFragment();
   const wishlistIds = new Set(AppUtils.getWishlist().map((item) => String(item.id)));
 
-  const wishlistIds = new Set(AppUtils.getWishlist().map(item => String(item.id)));
-
   AppUtils.safeArray(products).forEach((product) => {
     if (!product || !product.id) return;
 
@@ -259,7 +257,9 @@ function initializeProductCardFeatures() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  fetchAllProducts();
+  if (featuredContainer || arrivalsContainer) {
+    fetchAllProducts();
+  }
 });
 
 const newsletterForm = document.querySelector("#newsletter .form");
